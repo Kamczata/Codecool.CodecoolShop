@@ -1,0 +1,28 @@
+﻿@model Codecool.CodecoolShop.Models.Product
+@{
+    ViewData["Title"] = "Product";
+}
+<div class="container p-3 my-3 bg-white border" style="height: 500px; width: 920px; padding: 20px">
+    <div class="row">
+        <div class="col-lg-6" style="align-content:center; padding: 50px; padding-left: 100px">
+                <img src="~/img/@(Model.Name).jpg" class="border shadow-sm" style="padding: 50px">
+        </div>
+        <div class="col-lg-6">
+            <div style="padding:50px; color: black">
+                <h4 style="padding: 5px">@Model.Name</h4>
+                <h5 style="padding: 5px">@Model.Description</h5>
+                <h6 style="padding: 5px">Supplier: @Model.Supplier.Name</h6>
+                <div style="padding-top: 50px">
+                    <div class="cool-button">
+                        <h6 style="color: white; padding:10px">Price: @Model.DefaultPrice PLN</h6>
+                    </div>
+                    <a asp-controller="Product" asp-action="AddToCart" asp-route-id="@Model.Id" asp-route-view="Product">
+                        <div class="cool-button" style="background-color:#DB3F41; margin-top: 10px">
+                            <h6 style="color: white; text-align: center; padding: 10px">Add to cart</h6>
+                        </div>
+                    </a>
+</div>
+            </div>
+        </div>
+    </div>
+</div>

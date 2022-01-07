@@ -1,0 +1,141 @@
+﻿/* Please see documentation at https://docs.microsoft.com/aspnet/core/client-side/bundling-and-minification
+for details on configuring this project to bundle and minify static web assets. */
+
+@font-face {
+    font-family: RedHatText;
+    src: url(sansation_light.woff);
+}
+
+a.navbar-brand {
+  white-space: normal;
+  text-align: center;
+  word-break: break-all;
+}
+
+.cart-container {
+    object-position: right;
+    align-content: flex-end;
+    /* margin-right: 10px;*/
+    
+}
+
+img.cart-logo {
+    width: 25%;
+    height: 25%;
+}
+
+p.quantity {
+    color: #DB3F41;
+    font-weight:400;
+    font-size: 14px;
+}
+/* Provide sufficient contrast against white background */
+a {
+    color: #0366d6;
+}
+
+.nav-pills .nav-link.active, .nav-pills .show > .nav-link {
+  color: #fff;
+  background-color: #1b6ec2;
+  border-color: #1861ac;
+}
+
+/* Sticky footer styles
+-------------------------------------------------- */
+html {
+  font-size: 14px;
+}
+@media (min-width: 768px) {
+  html {
+    font-size: 16px;
+  }
+}
+
+.border-top {
+  border-top: 1px solid #e5e5e5;
+}
+.border-bottom {
+  border-bottom: 1px solid #e5e5e5;
+}
+
+.box-shadow {
+  box-shadow: 0 .25rem .75rem rgba(0, 0, 0, .05);
+}
+
+button.accept-policy {
+  font-size: 1rem;
+  line-height: inherit;
+}
+
+/* Sticky footer styles
+-------------------------------------------------- */
+html {
+  position: relative;
+  min-height: 100%;
+}
+
+body {
+    /* Margin bottom by footer height */
+    margin-bottom: 60px;
+    background-color: #4C98CB;
+}
+.footer {
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    white-space: nowrap;
+    line-height: 60px; /* Vertically center the text there */
+    background-color: #fff;
+}
+
+.btn-primary {
+    color: #fff;
+    background-color: #DB3F41;
+    border-color: #DB3F41;
+    border-radius: 2rem;
+}
+
+.btn:hover {
+    background-color: #4C98CB;
+    border-color: #4C98CB;
+}
+
+h6.blue {
+    color: #4C98CB;
+}
+
+.container-lg{
+    background-color: #fff;
+}
+
+.sidebar{
+    min-width: 200px;
+    max-width: 250px;
+}
+
+img.cart {
+    object-fit: cover;
+    width: 150px;
+    height: 150px;
+}
+
+.cool-button {
+    background-color: #DB3F41;
+    color: white;
+    width: 300px;
+    height: 40px;
+    background-color: #4C98CB;
+    border-radius: 25px;
+    margin-right: auto;
+    margin-left: auto;
+    text-align: center;
+    align-content: center;
+}
+
+.cool-button.red{
+    background-color: 
+}
+
+input:invalid{
+    border: red solid 1px;
+}

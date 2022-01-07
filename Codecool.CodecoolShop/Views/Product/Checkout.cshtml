@@ -1,0 +1,70 @@
+﻿@model Codecool.CodecoolShop.Models.Cart
+
+
+<div class="container p-3 my-3 bg-white border" style="height: 720px; width: 860px; padding: 20px">
+    <form method="post" style="width: 80%; margin-right: auto; margin-left: auto; padding-top: 20px; padding-bottom: 20px">
+        <div class="row form-group">
+            <div class="col">
+                <label for="firstName">FIRST NAME</label>
+                <input type="text" class="form-control " id="inputFirstName" name="firstName" pattern="[A-Z]{1}[a-z]{1,10}" required>
+            </div>
+            <div class="col">
+                <label for="lastName">LAST NAME</label>
+                <input type="text" class="form-control" id="inputLastName" name="lastName" pattern="[A-Z]{1}[a-z]{1,10}" required>
+            </div>
+        </div>
+        <div class="form-group">
+            <label for="email">EMAIL</label>
+            <input type="text" class="form-control" id="inputEmail" name="email" placeholder="example@domena.com" required>
+        </div>
+        <div class="form-group">
+            <label for="address">ADDRESS</label>
+            <input type="text" class="form-control" id="inputAddress" name="address" required>
+        </div>
+        <div class="form-row">
+            <div class="form-group col-md-6">
+                <label for="inputCountry">COUNTRY</label>
+                <input type="text" class="form-control" id="inputCountry" name="country" required>
+            </div>
+            <div class="form-group col-md-4">
+                <label for="inputCity">CITY</label>
+                <input type="text" class="form-control" id="inputCity" name="city" required>
+            </div>
+            <div class="form-group col-md-2">
+                <label for="inputZip">ZIP-CODE</label>
+                <input type="text" class="form-control" id="inputZip" name="zip" placeholder="XX-XXX" pattern="[0-9]{2}-[0-9]{3}" required>
+            </div>
+        </div>
+        <h4 style="padding-top: 15px; padding-bottom: 15px; color: #4C98CB ">PAYMENT CREDENTIALS</h4>
+        <div class="form-row">
+            <div class="col-md-12 mb-3">
+                <label for="cardHolder">CARD HOLDER</label>
+                <input type="text" class="form-control" id="cardHolder" name="cardHolder" required>
+            </div>
+        </div>
+        <div class="form-row">
+            <div class="col-md-6 mb-3">
+                <label for="Card1">CARD NUMBER</label>
+                <input type="text" class="form-control" id="Card" name="cardNumber" placeholder="XXXX-XXXX-XXXX-XXXX" required pttern="[1-9]{1}[0-9]{11}">
+            </div>
+            <div class="col-md-3 mb-3">
+                <label for="expiryDate">EXPIRY DATE</label>
+                <input type="month" class="form-control" id="expiryDate" name="expiry" required>
+            </div>
+            <div class="col-md-3 mb-3">
+                <label for="securityCode">SECURITY CODE</label>
+                <input type="text" class="form-control" id="securityCode" name="securityCode" placeholder="XXX" pattern="[0-9]{3}" required>
+            </div>
+        </div>
+        <div class="cool-button">
+            <h6 style="color: white; padding:10px">TOTAL @Model.FullPrice PLN</h6>
+        </div>
+        <button type="submit" class="cool-button" style="background-color:#DB3F41; margin-top: 10px; margin-bottom: 10px; margin-left: 180px">
+            <h6 style="color: white; text-align: center; padding: 5px">PAY</h6>
+        </button>
+    </form>
+
+
+</div>
+
+

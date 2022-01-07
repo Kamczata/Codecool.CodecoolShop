@@ -1,0 +1,78 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>@ViewData["Title"] - Codecool.CodecoolShop</title>
+    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="~/css/site.css" />
+   
+</head>
+<body>
+    <header>
+        <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light bg-white border-bottom box-shadow mb-3">
+            <div class="container">
+                <a class="navbar-brand" asp-area="" asp-controller="Product" asp-action="Index"><img src="~/img/shop_logo.PNG"></a>
+                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target=".navbar-collapse" aria-controls="navbarSupportedContent"
+                        aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="navbar-collapse collapse d-sm-inline-flex flex-sm-row-reverse">
+                    <ul class="navbar-nav flex-grow-1 navbar-category">
+                        <li class="nav-item">
+                            <a class="nav-link text-dark h6 blue" asp-area="" asp-controller="Product" asp-action="Index">Home</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link text-dark h6 blue" asp-area="" asp-controller="Product" asp-action="Privacy">Privacy</a>
+                        </li>
+                        @*@foreach{
+
+                            }*@
+                    </ul>
+                </div>
+                <div class="cart-container">
+                    <a class="cart" asp-area="" asp-controller="Product" asp-action="Cart">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" fill="currentColor" class="bi bi-cart3" viewBox="0 0 16 16" style="color: #DB3F41">
+                            <path d="M0 1.5A.5.5 0 0 1 .5 1H2a.5.5 0 0 1 .485.379L2.89 3H14.5a.5.5 0 0 1 .49.598l-1 5a.5.5 0 0 1-.465.401l-9.397.472L4.415 11H13a.5.5 0 0 1 0 1H4a.5.5 0 0 1-.491-.408L2.01 3.607 1.61 2H.5a.5.5 0 0 1-.5-.5zM3.102 4l.84 4.479 9.144-.459L13.89 4H3.102zM5 12a2 2 0 1 0 0 4 2 2 0 0 0 0-4zm7 0a2 2 0 1 0 0 4 2 2 0 0 0 0-4zm-7 1a1 1 0 1 1 0 2 1 1 0 0 1 0-2zm7 0a1 1 0 1 1 0 2 1 1 0 0 1 0-2z" />
+                        </svg>
+                    </a>
+                </div>
+                <h6 style="margin-left: 3px; margin-top: 10px; color: #DB3F41" class="quantity">@ViewData["ProductsQuantity"]</h6>
+            </div>
+        </nav>
+    </header>
+        <div class="d-inline-flex p-2 float-left bg-white sidebar">
+            <ul style="list-style-type:none; padding-top: 10px">
+                <li>
+                    <h6 style="color: #4C98CB">SUPPLIERS</h6>
+                </li>
+                <li class="dropdown-divider"></li>
+                <li>
+                    <div><a asp-controller="Product" asp-action="Supplier" asp-route-id="1"><h6>Amazon</h6></a></div>
+                <li class="dropdown-divider"></li>
+                </li>
+                <li>
+                    <div><a asp-controller="Product" asp-action="Supplier" asp-route-id="2"><h6>Lenovo</h6></a></div>
+                </li>
+            </ul>
+                
+        </div>
+    <div class="container">
+        <main role="main" class="pb-3">
+
+            @RenderBody()
+        </main>
+    </div>
+
+    <footer class="border-top footer text-muted">
+        <div class="container">
+            &copy; 2021 - Codecool.CodecoolShop - <a asp-area="" asp-controller="Product" asp-action="Privacy">Privacy</a>
+        </div>
+    </footer>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/validate.js/0.13.1/validate.min.js"></script>
+    <script src="~/lib/jquery/dist/jquery.min.js"></script>
+    <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="~/js/site.js" asp-append-version="true"></script>
+    @RenderSection("Scripts", required: false)
+</body>
+</html>
