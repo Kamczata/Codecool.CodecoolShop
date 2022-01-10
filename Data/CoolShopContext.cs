@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-/*using Domain;*/
+using Domain;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Logging;
 
@@ -13,8 +13,8 @@ namespace Data
     {
         private const string ConnectionString = "Data Source=localhost;Database=Company;Integrated Security=true";
 
-        public DbSet<Employee> Employees { get; set; }
-        public DbSet<Project> Projects { get; set; }
+/*        public DbSet<Employee> Employees { get; set; }
+        public DbSet<Project> Projects { get; set; }*/
 
         public CompanyContext(DbContextOptions options) : base(options)
         {
