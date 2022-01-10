@@ -29,7 +29,7 @@
                     <div class="col-lg-7" style="color: #4C98CB">
                         <h5>@item.Key.Name</h5>
                         <h6>@item.Key.Description</h6>
-                        <h6>@item.Key.DefaultPrice PLN</h6>
+                        <h6>@item.Key.DefaultPrice @item.Key.Currency</h6>
                     </div>
 
                     <div class="col-2" style="color: #DB3F41; float: right; text-align: center; align-self: center">
@@ -44,14 +44,14 @@
                                 <path d="M7.247 11.14 2.451 5.658C1.885 5.013 2.345 4 3.204 4h9.592a1 1 0 0 1 .753 1.659l-4.796 5.48a1 1 0 0 1-1.506 0z" />
                             </svg>
                         </a>
-                        <h6>@Model.ProductsWithPrice[item.Key.Id] PLN</h6>
+                        <h6>@Model.ProductsWithPrice[item.Key.Id] @item.Key.Currency</h6>
                     </div>
 
                 </div>
             </div>
         }
         <div class="cool-button">
-            <h6 style="color: white; padding:10px">TOTAL @Model.FullPrice PLN</h6>
+            <h6 style="color: white; padding:10px">TOTAL @Model.FullPrice USD</h6>
         </div>
         <a asp-controller="Product" asp-action="Checkout">
             <div class="cool-button" style="background-color:#DB3F41; margin-top: 10px; margin-bottom: 10px">

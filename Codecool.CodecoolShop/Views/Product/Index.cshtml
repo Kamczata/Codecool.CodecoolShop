@@ -24,7 +24,7 @@
                     <p class="card-text">@element.Description.</p>
                     <p class="card-text">Category: @element.ProductCategory.Department</p>
                     <p class="card-text">Supplier: @element.Supplier.Name</p>
-                    <p class="card-text text-center"><strong>Price: @element.DefaultPrice.ToString("C2")</strong></p>
+                    <p class="card-text text-center"><strong>Price: @element.DefaultPrice @element.Currency</strong></p>
                     <a asp-controller="Product" asp-action="AddToCart" asp-route-id="@element.Id" asp-route-view="Index" type="button" class="btn btn-primary" style="float: bottom; display: block; margin-left: auto; margin-right: auto; width: 50%;">Add To Cart</a>
                 </div>
             </div>

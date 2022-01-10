@@ -14,7 +14,7 @@
                 <h6 style="padding: 5px">Supplier: @Model.Supplier.Name</h6>
                 <div style="padding-top: 50px">
                     <div class="cool-button">
-                        <h6 style="color: white; padding:10px">Price: @Model.DefaultPrice PLN</h6>
+                        <h6 style="color: white; padding:10px">Price: @Model.DefaultPrice @Model.Currency</h6>
                     </div>
                     <a asp-controller="Product" asp-action="AddToCart" asp-route-id="@Model.Id" asp-route-view="Product">
                         <div class="cool-button" style="background-color:#DB3F41; margin-top: 10px">
