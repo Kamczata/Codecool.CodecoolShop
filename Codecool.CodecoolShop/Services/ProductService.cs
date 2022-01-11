@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Net;
 using Codecool.CodecoolShop.Daos;
 using Codecool.CodecoolShop.Models;
+using Codecool.CodecoolShop.Repository;
 using Microsoft.AspNetCore.Http;
 using Newtonsoft.Json;
 
@@ -10,22 +11,36 @@ namespace Codecool.CodecoolShop.Services
 {
     public class ProductService
     {
-        private readonly IProductDao productDao;
+        /*private readonly IProductDao productDao;
         private readonly IProductCategoryDao productCategoryDao;
         private readonly ICartDao cartDao;
         private readonly ICustomerDao customerDao;
-        private readonly ISupplierDao supplierDao;
+        private readonly ISupplierDao supplierDao;*/
 
-        public ProductService(IProductDao productDao, IProductCategoryDao productCategoryDao, ICartDao cartDao, ICustomerDao customerDao, ISupplierDao supplierDao)
+        private readonly IProductRepository productRepository;
+        private readonly ICategoryRepository categoryRepository;
+        private readonly ISupplierRepository supplierRepository;
+        private readonly IOrderRepository orderRepository;
+
+        /*public ProductService(IProductDao productDao, IProductCategoryDao productCategoryDao, ICartDao cartDao, ICustomerDao customerDao, ISupplierDao supplierDao)
         {
             this.productDao = productDao;
             this.productCategoryDao = productCategoryDao;
             this.cartDao = cartDao;
             this.customerDao = customerDao;
             this.supplierDao = supplierDao;
+        }*/
+
+        public ProductService(IProductRepository productRepository, ICategoryRepository categoryRepository,
+            ISupplierRepository supplierRepository)
+        {
+            this.productRepository = productRepository;
+            this.categoryRepository = categoryRepository;
+            this.supplierRepository = supplierRepository;
+            //this.orderRepository = orderRepository;
         }
 
-        public ProductCategory GetProductCategory(int categoryId)
+        /*public ProductCategory GetProductCategory(int categoryId)
         {
             return this.productCategoryDao.Get(categoryId);
         }
@@ -88,7 +103,7 @@ namespace Codecool.CodecoolShop.Services
 
         public int GetProductsQuantity() => this.cartDao.ProductsQuantity();
 
-        public void RemoveFromCart(int id, int quantity) => this.cartDao.Remove(id, quantity);
+        public void RemoveFromCart(int id, int quantity) => this.cartDao.Remove(id, quantity);*/
 
 
     }

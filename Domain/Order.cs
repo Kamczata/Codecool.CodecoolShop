@@ -5,7 +5,7 @@ using System.Threading.Tasks;
 
 namespace Domain
 {
-    public class Cart
+    public class Order
     {
         public Customer Customer { get; set; }
         //public List<Product> Products { get; set; }
@@ -14,7 +14,7 @@ namespace Domain
 
         public decimal FullPrice { get; set; }
 
-        public Cart()
+        public Order()
         {
             //Products = new List<Product>();
             FullPrice = 0;
