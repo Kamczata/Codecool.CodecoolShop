@@ -1,4 +1,5 @@
-﻿using Domain;
+﻿using Data;
+using Domain;
 using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
@@ -9,24 +10,27 @@ namespace Codecool.CodecoolShop.Repository.Implementation
 {
     public class CustomerRepository : ICustomerRepository
     {
-        DbContext _coolShopContext;
-        public CustomerRepository(DbContext CoolShopContext)
+        CoolShopContext _context;
+        public CustomerRepository(CoolShopContext coolShopContext)
         {
-            _coolShopContext = CoolShopContext;
+            _context = coolShopContext;
         }
         public void Add(Customer customer)
         {
-            throw new NotImplementedException();
+            _context.Customers.Add(customer);
+            _context.SaveChanges();
         }
 
         public Customer Get(int id)
         {
-            throw new NotImplementedException();
+            return _context.Customers.Find(id);
         }
 
         public void Remove(int id)
         {
-            throw new NotImplementedException();
+            var item = Get(id);
+            _context.Customers.Remove(item);
+            _context.SaveChanges();
         }
 
         public void Update(int id)

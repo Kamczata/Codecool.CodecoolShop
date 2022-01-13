@@ -23,15 +23,15 @@ namespace Codecool.CodecoolShop.Controllers
         public ProductController(ILogger<ProductController> logger)
         {
             _logger = logger;
-            ProductService = new ProductService(
+            /*ProductService = new ProductService(
                 ProductDaoMemory.GetInstance(),
                 ProductCategoryDaoMemory.GetInstance(),
                 CartDaoMemory.GetInstance(),
                 CustomerDaoMemory.GetInstance(),
-                SupplierDaoMemory.GetInstance());
+                SupplierDaoMemory.GetInstance());*/
         }
 
-        public IActionResult Index()
+        /*public IActionResult Index()
         {
             ViewData["ProductsQuantity"] = ProductService.GetProductsQuantity();
             var products = ProductService.GetAllProducts();
@@ -116,13 +116,13 @@ namespace Codecool.CodecoolShop.Controllers
                 return RedirectToAction("Error");
             }
             
-        }
+        }*/
 
 
-        [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
+        /*[ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
         public IActionResult Error()
         {
             return View(new ErrorViewModel { RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier });
-        }
+        }*/
     }
 }

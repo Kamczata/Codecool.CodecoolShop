@@ -4,34 +4,48 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using Data;
 
 namespace Codecool.CodecoolShop.Repository.Implementation
 {
     public class ProductRepository : IProductRepository
     {
-        DbContext _coolShopContext;
-        public ProductRepository(DbContext CoolShopContext)
+        CoolShopContext _context;
+        public ProductRepository(CoolShopContext coolShopContext)
         {
-            _coolShopContext = CoolShopContext;
+            _context = coolShopContext;
         }
         public void Add(Product item)
         {
-            throw new NotImplementedException();
+            _context.Products.Add(item);
+            _context.SaveChanges();
         }
 
         public Product Get(int id)
         {
-            throw new NotImplementedException();
+            return _context.Products.Find(id);
         }
 
         public IEnumerable<Product> GetAll()
         {
-            throw new NotImplementedException();
+            return _context.Products.ToList();
         }
 
         public void Remove(int id)
         {
-            throw new NotImplementedException();
+            var product = _context.Products.Find(id);
+            _context.Products.Remove(product);
+            _context.SaveChanges();
+        }
+
+        public IEnumerable<Product> GetProductsByCategory(int categoryId)
+        {
+            return _context.Products.Where(p => p.ProductCategoryId == categoryId).ToList();
+        }
+
+        public IEnumerable<Product> GetProductsBySupplier(int supplierId)
+        {
+            return _context.Products.Where(p => p.SupplierId == supplierId).ToList();
         }
     }
 }

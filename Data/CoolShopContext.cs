@@ -13,13 +13,12 @@ namespace Data
     {
         private const string ConnectionString = "Data Source=localhost;Database=CoolShop;Integrated Security=true";
 
+        public DbSet<Product> Products { get; set; }
+        public DbSet<ProductCategory> Categories { get; set; }
+        public DbSet<Supplier> Suppliers { get; set; }
+        public DbSet<Customer> Customers { get; set; }
+        public DbSet<Order> Orders { get; set; }
 
-        /*      public DbSet<Employee> Employees { get; set; }
-                public DbSet<Project> Projects { get; set; }*/
-
-        /*public CoolShopContext(DbContextOptions options) : base(options)
-        {
-        }*/
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {

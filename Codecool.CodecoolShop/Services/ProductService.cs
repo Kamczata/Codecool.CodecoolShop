@@ -20,7 +20,7 @@ namespace Codecool.CodecoolShop.Services
         private readonly IProductRepository productRepository;
         private readonly ICategoryRepository categoryRepository;
         private readonly ISupplierRepository supplierRepository;
-        private readonly IOrderRepository orderRepository;
+        //private readonly IOrderRepository orderRepository;
 
         /*public ProductService(IProductDao productDao, IProductCategoryDao productCategoryDao, ICartDao cartDao, ICustomerDao customerDao, ISupplierDao supplierDao)
         {
