@@ -28,28 +28,22 @@ namespace Codecool.CodecoolShop.Repository.Implementation
 
         public IEnumerable<Order> GetCustomerOrders(int customerId)
         {
-            return _context.Orders.Where(o => o.CustomerId == customerId).ToList();
+            return _context.Orders.Where(o => o.Customer.Id == customerId).ToList();
         }
 
         public void Increase(int productId, int orderId)
         {
-            var order = Get(orderId);
-            order.ProductsInCart[productId] += 1;
             _context.SaveChanges();
 
         }
 
         public void Decrease(int productId, int orderId)
         {
-            var order = Get(orderId);
-            order.ProductsInCart[productId] -= 1;
-            _context.SaveChanges();
+            
         }
 
         public void Remove(int productId, int orderId)
         {
-            var order = Get(orderId);
-            order.ProductsInCart.Remove(productId);
             _context.SaveChanges();
         }
     }

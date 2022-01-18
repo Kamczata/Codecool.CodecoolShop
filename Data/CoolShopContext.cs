@@ -18,7 +18,12 @@ namespace Data
         public DbSet<Supplier> Suppliers { get; set; }
         public DbSet<Customer> Customers { get; set; }
         public DbSet<Order> Orders { get; set; }
+        public DbSet<ShoppingCartItem> ShoppingCartItems { get; set; }
 
+        public CoolShopContext(DbContextOptions options): base(options)
+        {
+
+        }
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
@@ -33,11 +38,11 @@ namespace Data
             base.OnConfiguring(optionsBuilder);
         }
 
-        /*protected override void OnModelCreating(ModelBuilder modelBuilder)
+        protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             //modelBuilder.Entity<Employee>().Property(x => x.FirstName).IsRequired().HasColumnType("varchar(60)");
 
             base.OnModelCreating(modelBuilder);
-        }*/
+        }
     }
 }

@@ -5,12 +5,14 @@ using System.Threading.Tasks;
 using Codecool.CodecoolShop.Daos;
 using Codecool.CodecoolShop.Daos.Implementations;
 using Codecool.CodecoolShop.Models;
+using Codecool.CodecoolShop.Repository;
 using Codecool.CodecoolShop.Repository.Implementation;
 using Codecool.CodecoolShop.Services;
 using Data;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.HttpsPolicy;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
@@ -29,6 +31,11 @@ namespace Codecool.CodecoolShop
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
+            services.AddDbContext<CoolShopContext>(options => options.UseSqlServer(Configuration.GetConnectionString("DefaultDatabase")));
+            services.AddScoped<ICategoryRepository, CategoryRepository>();
+            services.AddScoped<IProductRepository, ProductRepository>();
+            services.AddScoped<ISupplierRepository, SupplierRepository>();
+            services.AddScoped<ProductService, ProductService>();
             services.AddControllersWithViews();
         }
 
@@ -59,7 +66,6 @@ namespace Codecool.CodecoolShop
                     pattern: "{controller=Product}/{action=Index}/{id?}");
             });
 
-            SetupInMemoryDatabases();
         }
 
         private void SetupInMemoryDatabases()
@@ -83,17 +89,16 @@ namespace Codecool.CodecoolShop
 
         private void SetupDatabase()
         {
-            CoolShopContext coolShopContext = new CoolShopContext();
 
-            CategoryRepository categoryRepository = new CategoryRepository(coolShopContext);
-            CustomerRepository customerRepository = new CustomerRepository(coolShopContext);
+            //CategoryRepository categoryRepository = new CategoryRepository(coolShopContext);
+            /*CustomerRepository customerRepository = new CustomerRepository(coolShopContext);
             OrderRepository orderRepository = new OrderRepository(coolShopContext);
             ProductRepository productRepository = new ProductRepository(coolShopContext);
             SupplierRepository supplierRepository = new SupplierRepository(coolShopContext);
 
             ProductService productService = new ProductService(productRepository, categoryRepository, supplierRepository);
             OrderService orderServicece = new OrderService(orderRepository);
-            CustomerService customerService = new CustomerService(customerRepository);
+            CustomerService customerService = new CustomerService(customerRepository);*/
         }
     }
 }

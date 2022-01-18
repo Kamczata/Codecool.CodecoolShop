@@ -40,12 +40,12 @@ namespace Codecool.CodecoolShop.Repository.Implementation
 
         public IEnumerable<Product> GetProductsByCategory(int categoryId)
         {
-            return _context.Products.Where(p => p.ProductCategoryId == categoryId).ToList();
+            return _context.Products.Where(p => p.ProductCategory.Id == categoryId).ToList();
         }
 
         public IEnumerable<Product> GetProductsBySupplier(int supplierId)
         {
-            return _context.Products.Where(p => p.SupplierId == supplierId).ToList();
+            return _context.Products.Where(p => p.Supplier.Id == supplierId).ToList();
         }
     }
 }
