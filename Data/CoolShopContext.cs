@@ -20,6 +20,11 @@ namespace Data
         public DbSet<Order> Orders { get; set; }
         public DbSet<ShoppingCartItem> ShoppingCartItems { get; set; }
 
+        public CoolShopContext()
+        {
+
+        }
+
         public CoolShopContext(DbContextOptions options): base(options)
         {
 
