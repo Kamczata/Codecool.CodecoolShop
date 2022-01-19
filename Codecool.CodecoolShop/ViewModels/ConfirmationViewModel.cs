@@ -8,7 +8,13 @@ namespace Codecool.CodecoolShop.ViewModels
 {
     public class ConfirmationViewModel
     {
+
         public Customer Customer { get; set; }
         public Order Order { get; set; }
+        public ConfirmationViewModel(Customer customer, Order order)
+        {
+            Customer = customer;
+            Order = order;
+        }
     }
 }

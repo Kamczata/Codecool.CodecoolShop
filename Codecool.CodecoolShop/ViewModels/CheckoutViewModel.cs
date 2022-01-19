@@ -7,6 +7,11 @@ namespace Codecool.CodecoolShop.ViewModels
 {
     public class CheckoutViewModel
     {
+
         public int ItemsInCart { get; set; }
+        public CheckoutViewModel(int itemsInCart)
+        {
+            ItemsInCart = itemsInCart;
+        }
     }
 }

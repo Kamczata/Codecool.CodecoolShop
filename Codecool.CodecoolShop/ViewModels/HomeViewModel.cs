@@ -8,11 +8,24 @@ namespace Codecool.CodecoolShop.ViewModels
 {
     public class HomeViewModel
     {
-        public List<ProductViewModel> Products { get; set; }
-        public List<ProductCategory> Categories { get; set; }
-        public List<Supplier> Suppliers { get; set; }
+
+        public IEnumerable<Product> Products { get; set; }
+        public IEnumerable<ProductCategory> Categories { get; set; }
+        public IEnumerable<Supplier> Suppliers { get; set; }
         public int ItemsInCart { get; set; }
         public Filter Filter {get; set;}
+
+        public HomeViewModel(IEnumerable<Product> products, IEnumerable<ProductCategory> categories,
+            IEnumerable<Supplier> suppliers, int itemsInCart, Filter filter)
+        {
+            Products = products;
+            Categories = categories;
+            Suppliers = suppliers;
+            ItemsInCart = itemsInCart;
+            Filter = filter;
+        }
+
+
 
     }
 }

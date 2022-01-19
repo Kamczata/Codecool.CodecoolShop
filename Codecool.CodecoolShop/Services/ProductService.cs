@@ -1,9 +1,8 @@
 using System;
 using System.Collections.Generic;
 using System.Net;
-using Codecool.CodecoolShop.Daos;
-using Codecool.CodecoolShop.Models;
 using Codecool.CodecoolShop.Repository;
+using Domain;
 using Microsoft.AspNetCore.Http;
 using Newtonsoft.Json;
 
@@ -11,34 +10,42 @@ namespace Codecool.CodecoolShop.Services
 {
     public class ProductService
     {
-        /*private readonly IProductDao productDao;
-        private readonly IProductCategoryDao productCategoryDao;
-        private readonly ICartDao cartDao;
-        private readonly ICustomerDao customerDao;
-        private readonly ISupplierDao supplierDao;*/
 
         private readonly IProductRepository productRepository;
         private readonly ICategoryRepository categoryRepository;
         private readonly ISupplierRepository supplierRepository;
-        //private readonly IOrderRepository orderRepository;
-
-        /*public ProductService(IProductDao productDao, IProductCategoryDao productCategoryDao, ICartDao cartDao, ICustomerDao customerDao, ISupplierDao supplierDao)
-        {
-            this.productDao = productDao;
-            this.productCategoryDao = productCategoryDao;
-            this.cartDao = cartDao;
-            this.customerDao = customerDao;
-            this.supplierDao = supplierDao;
-        }*/
+        private readonly IOrderRepository orderRepository;
 
         public ProductService(IProductRepository productRepository, ICategoryRepository categoryRepository,
-            ISupplierRepository supplierRepository)
+            ISupplierRepository supplierRepository, IOrderRepository orderRepository)
         {
             this.productRepository = productRepository;
             this.categoryRepository = categoryRepository;
             this.supplierRepository = supplierRepository;
-            //this.orderRepository = orderRepository;
+            this.orderRepository = orderRepository;
         }
+
+        public IEnumerable<Product> GetAllProducts()
+        {
+            return this.productRepository.GetAll();
+        }
+
+        public IEnumerable<ProductCategory> GetAllCategories()
+        {
+            return this.categoryRepository.GetAll();
+        }
+
+        public IEnumerable<Supplier> GetAllSuppliers()
+        {
+            return this.supplierRepository.GetAll();
+        }
+
+        public int GetItemsInCartQuantity()
+        {
+            int quantity = 0;
+            return quantity;
+        }
+
 
         /*public ProductCategory GetProductCategory(int categoryId)
         {
@@ -57,10 +64,6 @@ namespace Codecool.CodecoolShop.Services
             return this.productDao.GetBy(supplier);
         }
 
-        public IEnumerable<Product> GetAllProducts()
-        {
-            return this.productDao.GetAll();
-        }
 
         public Product GetProductById(int id)
         {

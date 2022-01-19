@@ -8,8 +8,16 @@ namespace Codecool.CodecoolShop.ViewModels
 {
     public class ProductViewModel
     {
+
         public Product Item { get; set; }
         public Supplier Supplier { get; set; }
         public int ItemsInCart { get; set; }
+
+        public ProductViewModel(Product item, Supplier supplier, int itemsInCart)
+        {
+            Item = item;
+            Supplier = supplier;
+            ItemsInCart = itemsInCart;
+        }
     }
 }

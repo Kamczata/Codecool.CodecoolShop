@@ -2,9 +2,6 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
-using Codecool.CodecoolShop.Daos;
-using Codecool.CodecoolShop.Daos.Implementations;
-using Codecool.CodecoolShop.Models;
 using Codecool.CodecoolShop.Repository;
 using Codecool.CodecoolShop.Repository.Implementation;
 using Codecool.CodecoolShop.Services;
@@ -68,7 +65,7 @@ namespace Codecool.CodecoolShop
 
         }
 
-        private void SetupInMemoryDatabases()
+        /*rivate void SetupInMemoryDatabases()
         {
             IProductDao productDataStore = ProductDaoMemory.GetInstance();
             IProductCategoryDao productCategoryDataStore = ProductCategoryDaoMemory.GetInstance();
@@ -85,20 +82,7 @@ namespace Codecool.CodecoolShop
             productDataStore.Add(new Product { Name = "Amazon Fire", DefaultPrice = 49.9m, Currency = "USD", Description = "Fantastic price. Large content ecosystem. Good parental controls. Helpful technical support.", ProductCategory = tablet, Supplier = amazon });
             productDataStore.Add(new Product { Name = "Lenovo IdeaPad Miix 700", DefaultPrice = 479.0m, Currency = "USD", Description = "Keyboard cover is included. Fanless Core m5 processor. Full-size USB ports. Adjustable kickstand.", ProductCategory = tablet, Supplier = lenovo });
             productDataStore.Add(new Product { Name = "Amazon Fire HD 8", DefaultPrice = 89.0m, Currency = "USD", Description = "Amazon's latest Fire HD 8 tablet is a great value for media consumption.", ProductCategory = tablet, Supplier = amazon });
-        }
+        }*/
 
-        private void SetupDatabase()
-        {
-
-            //CategoryRepository categoryRepository = new CategoryRepository(coolShopContext);
-            /*CustomerRepository customerRepository = new CustomerRepository(coolShopContext);
-            OrderRepository orderRepository = new OrderRepository(coolShopContext);
-            ProductRepository productRepository = new ProductRepository(coolShopContext);
-            SupplierRepository supplierRepository = new SupplierRepository(coolShopContext);
-
-            ProductService productService = new ProductService(productRepository, categoryRepository, supplierRepository);
-            OrderService orderServicece = new OrderService(orderRepository);
-            CustomerService customerService = new CustomerService(customerRepository);*/
-        }
     }
 }

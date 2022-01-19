@@ -3,15 +3,14 @@ using System.Collections.Generic;
 using System.Diagnostics;
 using System.Linq;
 using System.Threading.Tasks;
-using Codecool.CodecoolShop.Daos;
-using Codecool.CodecoolShop.Daos.Implementations;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
-using Codecool.CodecoolShop.Models;
 using Codecool.CodecoolShop.Services;
 using System.Text.Json;
 using Microsoft.AspNetCore.Http;
 using Newtonsoft.Json.Linq;
+using Codecool.CodecoolShop.ViewModels;
+using Domain;
 
 namespace Codecool.CodecoolShop.Controllers
 {
@@ -26,14 +25,18 @@ namespace Codecool.CodecoolShop.Controllers
             this.productService = productService;
         }
 
-        /*public IActionResult Index()
+        public IActionResult Index()
         {
-            ViewData["ProductsQuantity"] = ProductService.GetProductsQuantity();
-            var products = ProductService.GetAllProducts();
-            return View(products.ToList());
+            Filter filter = Filter.All;
+            var products = productService.GetAllProducts();
+            var categories = productService.GetAllCategories();
+            var suppliers = productService.GetAllSuppliers();
+            int itemsInCart = productService.GetItemsInCartQuantity();
+            var model = new HomeViewModel(products, categories,suppliers,itemsInCart,filter);
+            return View();
         }
 
-        public IActionResult Category(int id)
+        /*public IActionResult Category(int id)
         {
             ViewData["ProductsQuantity"] = ProductService.GetProductsQuantity();
             var products = ProductService.GetProductsForCategory(id);
@@ -72,7 +75,7 @@ namespace Codecool.CodecoolShop.Controllers
             var product = ProductService.GetProductById(id);
             ProductService.AddProductToCart(product);
             ViewData["ProductsQuantity"] = ProductService.GetProductsQuantity();
-            if (view =="Product")
+            if (view == "Product")
             {
                 return RedirectToAction(view, new { id = id });
             }
@@ -102,7 +105,7 @@ namespace Codecool.CodecoolShop.Controllers
                 Customer customer = ProductService.CreateCustomer(collection);
                 ProductService.AddCustomerToCart(customer);
                 //string cartJson = JsonSerializer.Serialize(cart.ProductsInCart);
-                string customerJson= JsonSerializer.Serialize(customer);
+                string customerJson = JsonSerializer.Serialize(customer);
                 ViewData["order"] = customerJson;
                 return View("Order");
             }
@@ -110,7 +113,7 @@ namespace Codecool.CodecoolShop.Controllers
             {
                 return RedirectToAction("Error");
             }
-            
+
         }*/
 
 

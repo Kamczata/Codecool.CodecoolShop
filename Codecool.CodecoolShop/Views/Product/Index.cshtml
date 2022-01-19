@@ -2,12 +2,12 @@
     ViewData["Title"] = "Home Page";
 }
 
-@model List<Codecool.CodecoolShop.Models.Product>
+@model Codecool.CodecoolShop.ViewModels.HomeViewModel
 
 
 
 <div class="container">
-    @foreach (var element in Model)
+    @foreach (var element in Model.Products)
     {
         <div class="col-lg-3 col-lg-3" style="display: inline-block; max-width: 350px; height: 350px">
             <div class="card">
@@ -16,7 +16,7 @@
                 <div class="card-body">
                     <h5 class="card-title text-center">
                         Product
-                        @{ var num = Model.IndexOf(element) + 1;}
+                        @{ var num = Model.Products.Count();}
                         @num
                     </h5>
                     <a class="card-title" asp-controller="Product" asp-action="Product" asp-route-id="@element.Id"><h5>@element.Name</h5></a>

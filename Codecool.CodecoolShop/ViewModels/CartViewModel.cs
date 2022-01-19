@@ -8,7 +8,14 @@ namespace Codecool.CodecoolShop.ViewModels
 {
     public class CartViewModel
     {
+
         public List<ShoppingCartItem> Items { get; set; }
         public int ItemsInCart { get; set; }
+
+        public CartViewModel(List<ShoppingCartItem> items, int itemsInCart)
+        {
+            Items = items;
+            ItemsInCart = itemsInCart;
+        }
     }
 }
