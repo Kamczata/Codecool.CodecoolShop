@@ -9,14 +9,14 @@ namespace Codecool.CodecoolShop.ViewModels
     public class ProductViewModel
     {
 
-        public Product Item { get; set; }
-        public Supplier Supplier { get; set; }
+        public Product Product { get; set; }
+        //public Supplier Supplier { get; set; }
         public int ItemsInCart { get; set; }
 
-        public ProductViewModel(Product item, Supplier supplier, int itemsInCart)
+        public ProductViewModel(Product product, int itemsInCart)
         {
-            Item = item;
-            Supplier = supplier;
+            Product = product;
+            //Supplier = supplier;
             ItemsInCart = itemsInCart;
         }
     }

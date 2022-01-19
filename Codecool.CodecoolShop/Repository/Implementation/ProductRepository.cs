@@ -23,7 +23,9 @@ namespace Codecool.CodecoolShop.Repository.Implementation
 
         public Product Get(int id)
         {
-            return _context.Products.Find(id);
+            return _context.Products
+                .Include(p => p.Supplier)
+                .FirstOrDefault(p => p.Id == id);
         }
 
         public IEnumerable<Product> GetAll()

@@ -20,7 +20,6 @@
                         @num
                     </h5>
                     <a class="card-title" asp-controller="Product" asp-action="Product" asp-route-id="@element.Id"><h5>@element.Name</h5></a>
-                    @*<h5 class="card-title">@element.Name</h5>*@
                     <p class="card-text">@element.Description.</p>
                     <p class="card-text">Category: @element.ProductCategory.Department</p>
                     <p class="card-text">Supplier: @element.Supplier.Name</p>

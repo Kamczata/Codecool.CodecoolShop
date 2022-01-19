@@ -35,9 +35,19 @@ namespace Codecool.CodecoolShop.Services
             return this.categoryRepository.GetAll();
         }
 
+        public ProductCategory GetCategoryById(int id)
+        {
+            return this.categoryRepository.Get(id);
+        }
+
         public IEnumerable<Supplier> GetAllSuppliers()
         {
             return this.supplierRepository.GetAll();
+        }
+
+        public Supplier GetSupplierById(int id)
+        {
+            return this.supplierRepository.Get(id);
         }
 
         public int GetItemsInCartQuantity()
@@ -46,29 +56,27 @@ namespace Codecool.CodecoolShop.Services
             return quantity;
         }
 
+        public IEnumerable<Product> GetProductsForCategory(int categoryId)
+        {
+            return this.productRepository.GetProductsByCategory(categoryId);
+        }
+
+        public IEnumerable<Product> GetProductsForSupplier(int supplierId)
+        {
+            return this.productRepository.GetProductsBySupplier(supplierId);
+        }
+
+        public Product GetProductById(int id)
+        {
+            return this.productRepository.Get(id);
+        }
+
 
         /*public ProductCategory GetProductCategory(int categoryId)
         {
             return this.productCategoryDao.Get(categoryId);
         }
 
-        public IEnumerable<Product> GetProductsForCategory(int categoryId)
-        {
-            ProductCategory category = this.productCategoryDao.Get(categoryId);
-            return this.productDao.GetBy(category);
-        }
-
-        public IEnumerable<Product> GetProductsForSupplier(int supplierId)
-        {
-            Supplier supplier = this.supplierDao.Get(supplierId);
-            return this.productDao.GetBy(supplier);
-        }
-
-
-        public Product GetProductById(int id)
-        {
-            return this.productDao.Get(id);
-        }
 
         public Dictionary<Product, int> GetProductsFromCart()
         {
@@ -99,10 +107,7 @@ namespace Codecool.CodecoolShop.Services
             return customer;
         }
 
-        public void AddProductToCart(Product product)
-        {
-            this.cartDao.Add(product);
-        }
+        
 
         public int GetProductsQuantity() => this.cartDao.ProductsQuantity();
 

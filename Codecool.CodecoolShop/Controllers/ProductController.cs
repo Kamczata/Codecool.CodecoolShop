@@ -18,11 +18,13 @@ namespace Codecool.CodecoolShop.Controllers
     {
         private readonly ILogger<ProductController> _logger;
         private ProductService productService;
+        private readonly ShoppingCart shoppingCart;
 
-        public ProductController(ILogger<ProductController> logger, ProductService productService)
+        public ProductController(ILogger<ProductController> logger, ProductService productService, ShoppingCart shoppingCart)
         {
             _logger = logger;
             this.productService = productService;
+            this.shoppingCart = shoppingCart;
         }
 
         public IActionResult Index()
@@ -31,55 +33,64 @@ namespace Codecool.CodecoolShop.Controllers
             var products = productService.GetAllProducts();
             var categories = productService.GetAllCategories();
             var suppliers = productService.GetAllSuppliers();
-            int itemsInCart = productService.GetItemsInCartQuantity();
+            int itemsInCart = productService.GetItemsInCartQuantity(); 
+            ViewData["ProductsQuantity"] = shoppingCart.GetShoppingCartTotalQuantity();
             var model = new HomeViewModel(products, categories,suppliers,itemsInCart,filter);
-            return View();
+            return View(model);
         }
 
-        /*public IActionResult Category(int id)
+        public IActionResult Category(int id)
         {
-            ViewData["ProductsQuantity"] = ProductService.GetProductsQuantity();
-            var products = ProductService.GetProductsForCategory(id);
-            return View("Index", products.ToList());
+            Filter filter = Filter.Category;
+            var products = productService.GetProductsForCategory(id);
+            var categories = productService.GetAllCategories();
+            var suppliers = productService.GetAllSuppliers();
+            int itemsInCart = shoppingCart.GetShoppingCartTotalQuantity();
+            var model = new HomeViewModel(products, categories, suppliers, itemsInCart, filter);
+            return View("Index", model);
         }
 
         public IActionResult Supplier(int id)
         {
-            ViewData["ProductsQuantity"] = ProductService.GetProductsQuantity();
-            var products = ProductService.GetProductsForSupplier(id);
-            return View("Index", products.ToList());
+            Filter filter = Filter.Supplier;
+            var products = productService.GetProductsForSupplier(id);
+            var categories = productService.GetAllCategories();
+            var suppliers = productService.GetAllSuppliers();
+            int itemsInCart = shoppingCart.GetShoppingCartTotalQuantity();
+            var model = new HomeViewModel(products, categories, suppliers, itemsInCart, filter);
+            return View("Index", model);
         }
 
         public IActionResult Product(int id)
         {
-            ViewData["ProductsQuantity"] = ProductService.GetProductsQuantity();
-            var product = ProductService.GetProductById(id);
-            return View(product);
-        }
-
-        public IActionResult Privacy()
-        {
-            ViewData["ProductsQuantity"] = ProductService.GetProductsQuantity();
-            return View();
-        }
-
-        public IActionResult Cart()
-        {
-            ViewData["ProductsQuantity"] = ProductService.GetProductsQuantity();
-            var cart = ProductService.GetCart();
-            return View(cart);
+            Product product = productService.GetProductById(id);
+            int itemsInCart = shoppingCart.GetShoppingCartTotalQuantity();
+            var model = new ProductViewModel(product, itemsInCart);
+            return View(model);
         }
 
         public IActionResult AddToCart(int id, string view)
         {
-            var product = ProductService.GetProductById(id);
-            ProductService.AddProductToCart(product);
-            ViewData["ProductsQuantity"] = ProductService.GetProductsQuantity();
+            shoppingCart.AddToCart(id);
+            Product product = productService.GetProductById(id);
+            ViewData["ProductsQuantity"] = shoppingCart.GetShoppingCartTotalQuantity();
             if (view == "Product")
             {
                 return RedirectToAction(view, new { id = id });
             }
             return RedirectToAction(view);
+        }
+
+        public IActionResult Privacy()
+        {
+            return View();
+        }
+
+       /* public IActionResult Cart()
+        {
+            ViewData["ProductsQuantity"] = ProductService.GetProductsQuantity();
+            var cart = ProductService.GetCart();
+            return View(cart);
         }
 
         public IActionResult RemoveFromCart(int id, int quantity)
