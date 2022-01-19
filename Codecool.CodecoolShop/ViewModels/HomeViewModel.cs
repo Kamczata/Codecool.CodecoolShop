@@ -12,7 +12,6 @@ namespace Codecool.CodecoolShop.ViewModels
         public List<ProductCategory> Categories { get; set; }
         public List<Supplier> Suppliers { get; set; }
         public int ItemsInCart { get; set; }
-
         public Filter Filter {get; set;}
 
     }
