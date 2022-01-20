@@ -34,7 +34,10 @@ namespace Codecool.CodecoolShop
             services.AddScoped<IProductRepository, ProductRepository>();
             services.AddScoped<ISupplierRepository, SupplierRepository>();
             services.AddScoped<IOrderRepository, OrderRepository>();
+            services.AddScoped<ICustomerRepository, CustomerRepository>();
             services.AddScoped<ProductService, ProductService>();
+            services.AddScoped<CartService, CartService>();
+            services.AddScoped<CustomerService, CustomerService>();
 
             services.AddHttpContextAccessor();
             services.AddSession();

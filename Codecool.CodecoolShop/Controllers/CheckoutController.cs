@@ -27,8 +27,10 @@ namespace Codecool.CodecoolShop.Controllers
 
         public IActionResult Index()
         {
-            //var model = new CheckoutViewModel();
-            return View("Checkout");
+            var items = shoppingCart.GetShoppingCartItems();
+            var totalPrice = shoppingCart.GetShoppingCartTotal();
+            var model = new CheckoutViewModel(items, totalPrice);
+            return View("Checkout", model);
         }
 
         [HttpPost]

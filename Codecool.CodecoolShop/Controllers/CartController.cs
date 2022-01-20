@@ -1,5 +1,6 @@
 ﻿using Codecool.CodecoolShop.Services;
 using Codecool.CodecoolShop.ViewModels;
+using Domain;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
 using System;
@@ -13,34 +14,36 @@ namespace Codecool.CodecoolShop.Controllers
     {
 
         private readonly ILogger<CartController> _logger;
-        private OrderService orderService;
         private readonly ShoppingCart shoppingCart;
+        private readonly CartService cartService;
 
-        public CartController(ILogger<CartController> logger, OrderService orderService, ShoppingCart shoppingCart)
+        public CartController(ILogger<CartController> logger, ShoppingCart shoppingCart, CartService cartService)
         {
             _logger = logger;
-            this.orderService = orderService;
             this.shoppingCart = shoppingCart;
+            this.cartService = cartService;
         }
 
         public IActionResult Index()
         {
-            return View();
-        }
-
-        public IActionResult Cart()
-        {
             ViewData["ProductsQuantity"] = shoppingCart.GetShoppingCartTotalQuantity();
-            var itemsInCart = shoppingCart.ShoppingCartItems;
+            var itemsInCart = shoppingCart.GetShoppingCartItems();
             var shoppingCartTotal = shoppingCart.GetShoppingCartTotal();
             var model = new CartViewModel(itemsInCart, shoppingCartTotal);
-            return View(model);
+            return View("Cart", model);
         }
 
-       /* public IActionResult RemoveFromCart(int id, int quantity)
+        public IActionResult AddToCart(int id)
         {
-            ProductService.RemoveFromCart(id, quantity);
-            return RedirectToAction("Cart");
-        }*/
+            Product product = cartService.GetProductById(id);
+            shoppingCart.AddToCart(product);
+            return RedirectToAction("Index");
+        }
+
+        public IActionResult RemoveFromCart(int id, string quantity)
+        {
+            shoppingCart.RemoveFromCart(id, quantity);
+            return RedirectToAction("Index");
+        }
     }
 }

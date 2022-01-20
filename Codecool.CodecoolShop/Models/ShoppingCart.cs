@@ -64,7 +64,7 @@ namespace Codecool.CodecoolShop
             _context.SaveChanges();
         }
 
-        public int RemoveFromCart(int productId)
+        public void RemoveFromCart(int productId, string howMany)
         {
             var shoppingCartItem =
                     _context.ShoppingCartItems.SingleOrDefault(
@@ -74,7 +74,7 @@ namespace Codecool.CodecoolShop
 
             if (shoppingCartItem != null)
             {
-                if (shoppingCartItem.Quantity > 1)
+                if (shoppingCartItem.Quantity > 1 && howMany != "all")
                 {
                     shoppingCartItem.Quantity--;
                     localAmount = shoppingCartItem.Quantity;
@@ -87,16 +87,23 @@ namespace Codecool.CodecoolShop
 
             _context.SaveChanges();
 
-            return localAmount;
+           // return localAmount;
         }
 
         public List<ShoppingCartItem> GetShoppingCartItems()
         {
-            return ShoppingCartItems ??
+
+
+            var items = ShoppingCartItems ??
                    (ShoppingCartItems =
                        _context.ShoppingCartItems.Where(c => c.ShoppingCartId == ShoppingCartId)
                            .Include(s => s.Product)
                            .ToList());
+            foreach(var item in items)
+            {
+                item.ItemTotalPrice = item.Quantity * item.Product.DefaultPrice;
+            }
+            return items;
         }
 
         public void ClearCart()

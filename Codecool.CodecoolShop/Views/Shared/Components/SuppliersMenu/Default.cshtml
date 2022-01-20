@@ -1,0 +1,22 @@
+﻿@model IEnumerable<Domain.Supplier>
+
+
+    <li class="dropdown">
+        <div class="d-inline-flex p-2 float-left bg-white sidebar">
+            <ul style="list-style-type:none; padding-top: 10px">
+                <li>
+                    <h6 style="color: #4C98CB">SUPPLIERS</h6>
+                </li>
+                <li class="dropdown-divider"></li>
+                @foreach (var supplier in Model)
+                {
+                    <li>
+                        <a asp-controller="Product" asp-action="Supplier" asp-route-id=@supplier.Id>
+                            <h6 style="color: #4C98CB">@supplier.Name</h6></a>
+                    </li>
+                    <li class="dropdown-divider"></li>
+                }
+
+            </ul>
+        </div>
+    </li>

@@ -75,28 +75,7 @@ namespace Codecool.CodecoolShop.Services
         /*public ProductCategory GetProductCategory(int categoryId)
         {
             return this.productCategoryDao.Get(categoryId);
-        }
-
-
-        public Dictionary<Product, int> GetProductsFromCart()
-        {
-            return this.cartDao.GetItems();
-        }
-
-        public Cart GetCart() => this.cartDao.Get();
-
-        public void AddCustomerToCart(Customer customer)
-        {
-            this.cartDao.AssignCustomer(customer);
-        }
-
-        
-        
-
-        public int GetProductsQuantity() => this.cartDao.ProductsQuantity();
-
-        public void RemoveFromCart(int id, int quantity) => this.cartDao.Remove(id, quantity);*/
-
+        }*/
 
     }
 }
