@@ -37,24 +37,21 @@ namespace Codecool.CodecoolShop
             return new ShoppingCart(context) { ShoppingCartId = cartId };
         }
 
-        public void AddToCart(int productId)
+        public void AddToCart(Product product)
         {
             var shoppingCartItem =
                     _context.ShoppingCartItems
-                    .Include(p => p.Product.Supplier)
-                    .Include(p => p.Product.ProductCategory)
-                    .SingleOrDefault(s => s.Product.Id == productId && s.ShoppingCartId == ShoppingCartId);
+                    .SingleOrDefault(s => s.Product.Id == product.Id && s.ShoppingCartId == ShoppingCartId);
 
             if (shoppingCartItem == null)
             {
                 shoppingCartItem = new ShoppingCartItem
                 {
                     ShoppingCartId = ShoppingCartId,
-                    Product = _context.Products
-                    .Include(p => p.Supplier)
-                    .Include(p => p.ProductCategory)
-                    .FirstOrDefault(p => p.Id == productId),
-                    Quantity = 1
+                    Product = product,
+                    Quantity = 1,
+                    ItemTotalPrice = product.DefaultPrice
+
                 };
 
                 _context.ShoppingCartItems.Add(shoppingCartItem);
@@ -62,6 +59,7 @@ namespace Codecool.CodecoolShop
             else
             {
                 shoppingCartItem.Quantity++;
+                shoppingCartItem.ItemTotalPrice += product.DefaultPrice;
             }
             _context.SaveChanges();
         }

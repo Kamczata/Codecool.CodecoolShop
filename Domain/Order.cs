@@ -12,7 +12,6 @@ namespace Domain
         public List<ShoppingCartItem> Items { get; set; } = new List<ShoppingCartItem>();
 
 
-
         public void EmailSender()
         {
 

@@ -24,7 +24,23 @@
                     <p class="card-text">Category: @element.ProductCategory.Department</p>
                     <p class="card-text">Supplier: @element.Supplier.Name</p>
                     <p class="card-text text-center"><strong>Price: @element.DefaultPrice @element.Currency</strong></p>
-                    <a asp-controller="Product" asp-action="AddToCart" asp-route-id="@element.Id" asp-route-view="Index" type="button" class="btn btn-primary" style="float: bottom; display: block; margin-left: auto; margin-right: auto; width: 50%;">Add To Cart</a>
+                    @if (Model.Filter == Domain.Filter.All)
+                    {
+                <a asp-controller="Product" asp-action="AddToCart" asp-route-id="@element.Id" asp-route-view="Index"
+                   type="button" class="btn btn-primary"
+                   style="float: bottom; display: block; margin-left: auto; margin-right: auto; width: 50%;">Add To Cart</a> }
+                    else if (Model.Filter == Domain.Filter.Supplier)
+                    {
+    <a asp-controller="Product" asp-action="AddToCart" asp-route-id="@element.Supplier.Id" asp-route-view="Supplier"
+        type="button" class="btn btn-primary"
+        style="float: bottom; display: block; margin-left: auto; margin-right: auto; width: 50%;">Add To Cart</a> }
+                    else
+                    {
+                        <a asp-controller="Product" asp-action="AddToCart" asp-route-id="@element.ProductCategory.Id" asp-route-view="Category"
+                            type="button" class="btn btn-primary"
+                            style="float: bottom; display: block; margin-left: auto; margin-right: auto; width: 50%;">Add To Cart</a>
+                    }
+
                 </div>
             </div>
         </div>

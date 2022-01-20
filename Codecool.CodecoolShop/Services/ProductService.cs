@@ -90,23 +90,7 @@ namespace Codecool.CodecoolShop.Services
             this.cartDao.AssignCustomer(customer);
         }
 
-        public Customer CreateCustomer(IFormCollection collection)
-        {
-            Customer customer = this.customerDao.Get();
-            customer.FirstName = collection["firstName"];
-            customer.LastName = collection["lastName"];
-            customer.Email = collection["email"];
-            customer.Address = collection["address"];
-            customer.Country = collection["country"];
-            customer.City = collection["city"];
-            customer.Zip = collection["zip"];
-            customer.CardHolder = collection["cardHolder"];
-            customer.CardNumber = collection["cardNumber"];
-            customer.CardExpiry = collection["expiry"];
-            customer.SecurityCode = Convert.ToInt32(collection["securityCode"]);
-            return customer;
-        }
-
+        
         
 
         public int GetProductsQuantity() => this.cartDao.ProductsQuantity();

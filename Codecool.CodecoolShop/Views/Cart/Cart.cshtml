@@ -1,57 +1,57 @@
-﻿@*@model Codecool.CodecoolShop.Models.Cart
+﻿@model Codecool.CodecoolShop.ViewModels.CartViewModel
 @{
     ViewData["Title"] = "Cart";
     ViewData["Price"] = 0;
-}*@
+}
 
-@*<div class="container p-3 my-3 bg-white border">
+<div class="container p-3 my-3 bg-white border">
     <h4>Shopping cart</h4>
-    @if (@Model.FullPrice == 0)
+    @if (@Model.ShoppingCartTotal == 0)
     {
     <h5>Your cart is empty</h5>
     }
     else
     {
-        @foreach (var item in Model.ProductsInCart)
+        @foreach (var item in Model.Items)
         {
             <div class="container p-3 my-4 bg-white border shadow-sm" style="margin-right:auto; margin-left:auto; max-width:800px">
                 <div class="row">
                     <div class="col-1" style="align-self: center">
-                        <a class="card-title" asp-controller="Product" asp-action="RemoveFromCart" asp-route-id="@item.Key.Id" asp-route-quantity="1000">
+                        @*<a class="card-title" asp-controller="Product" asp-action="RemoveFromCart" asp-route-id="@item.Key.Id" asp-route-quantity="1000">*@
                             <svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" fill="#DB3F41" class="bi bi-x-circle" viewBox="0 0 16 16">
                                 <path d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z" />
                                 <path d="M4.646 4.646a.5.5 0 0 1 .708 0L8 7.293l2.646-2.647a.5.5 0 0 1 .708.708L8.707 8l2.647 2.646a.5.5 0 0 1-.708.708L8 8.707l-2.646 2.647a.5.5 0 0 1-.708-.708L7.293 8 4.646 5.354a.5.5 0 0 1 0-.708z" />
                             </svg>
-                        </a>
+                       @* </a>*@
                     </div>
-                    <img class="col-2" src="~/img/@(item.Key.Name).jpg" style="height: 80%; width: 80%; align-self: center; padding-top: 10px">
+                    <img class="col-2" src="~/img/@(item.Product.Name).jpg" style="height: 80%; width: 80%; align-self: center; padding-top: 10px">
 
                     <div class="col-lg-7" style="color: #4C98CB">
-                        <h5>@item.Key.Name</h5>
-                        <h6>@item.Key.Description</h6>
-                        <h6>@item.Key.DefaultPrice @item.Key.Currency</h6>
+                        <h5>@item.Product.Name</h5>
+                        <h6>@item.Product.Description</h6>
+                        <h6>@item.Product.DefaultPrice @item.Product.Currency</h6>
                     </div>
 
                     <div class="col-2" style="color: #DB3F41; float: right; text-align: center; align-self: center">
-                        <a asp-controller="Product" asp-action="AddToCart" asp-route-id="@item.Key.Id" asp-route-view="Cart">
+                        <a asp-controller="Product" asp-action="AddToCart" asp-route-id="@item.Product.Id" asp-route-view="Cart">
                             <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="#DB3F41" class="bi bi-caret-up-fill" viewBox="0 0 16 16">
                                 <path d="m7.247 4.86-4.796 5.481c-.566.647-.106 1.659.753 1.659h9.592a1 1 0 0 0 .753-1.659l-4.796-5.48a1 1 0 0 0-1.506 0z" />
                             </svg>
                         </a>
-                        <h6 style="padding-top: 7px; ">@item.Value</h6>
-                        <a class="card-title" asp-controller="Product" asp-action="RemoveFromCart" asp-route-id="@item.Key.Id" asp-route-quantity="1">
+                        <h6 style="padding-top: 7px; ">@item.Quantity</h6>
+                        @*<a class="card-title" asp-controller="Product" asp-action="RemoveFromCart" asp-route-id="@item.Id" asp-route-quantity="1">*@
                             <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="#DB3F41" class="bi bi-caret-down-fill" viewBox="0 0 16 16">
                                 <path d="M7.247 11.14 2.451 5.658C1.885 5.013 2.345 4 3.204 4h9.592a1 1 0 0 1 .753 1.659l-4.796 5.48a1 1 0 0 1-1.506 0z" />
                             </svg>
-                        </a>
-                        <h6>@Model.ProductsWithPrice[item.Key.Id] @item.Key.Currency</h6>
+                        @*</a>*@
+                        <h6>@Model.ProductsWithPrice[item.Key.Id] @item.Product.Currency</h6>
                     </div>
 
                 </div>
             </div>
         }
         <div class="cool-button">
-            <h6 style="color: white; padding:10px">TOTAL @Model.FullPrice USD</h6>
+            <h6 style="color: white; padding:10px">TOTAL @Model.ShoppingCartTotal USD</h6>
         </div>
         <a asp-controller="Product" asp-action="Checkout">
             <div class="cool-button" style="background-color:#DB3F41; margin-top: 10px; margin-bottom: 10px">
@@ -60,6 +60,6 @@
         </a>
 
     }
-</div>*@
+</div>
 
    

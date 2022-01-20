@@ -46,6 +46,7 @@ namespace Codecool.CodecoolShop.Controllers
             var categories = productService.GetAllCategories();
             var suppliers = productService.GetAllSuppliers();
             int itemsInCart = shoppingCart.GetShoppingCartTotalQuantity();
+            ViewData["ProductsQuantity"] = shoppingCart.GetShoppingCartTotalQuantity();
             var model = new HomeViewModel(products, categories, suppliers, itemsInCart, filter);
             return View("Index", model);
         }
@@ -57,6 +58,7 @@ namespace Codecool.CodecoolShop.Controllers
             var categories = productService.GetAllCategories();
             var suppliers = productService.GetAllSuppliers();
             int itemsInCart = shoppingCart.GetShoppingCartTotalQuantity();
+            ViewData["ProductsQuantity"] = shoppingCart.GetShoppingCartTotalQuantity();
             var model = new HomeViewModel(products, categories, suppliers, itemsInCart, filter);
             return View("Index", model);
         }
@@ -71,62 +73,15 @@ namespace Codecool.CodecoolShop.Controllers
 
         public IActionResult AddToCart(int id, string view)
         {
-            shoppingCart.AddToCart(id);
             Product product = productService.GetProductById(id);
-            ViewData["ProductsQuantity"] = shoppingCart.GetShoppingCartTotalQuantity();
-            if (view == "Product")
-            {
-                return RedirectToAction(view, new { id = id });
-            }
-            return RedirectToAction(view);
+            shoppingCart.AddToCart(product);
+            return RedirectToAction(view, new { id = id });
         }
 
         public IActionResult Privacy()
         {
             return View();
         }
-
-       /* public IActionResult Cart()
-        {
-            ViewData["ProductsQuantity"] = ProductService.GetProductsQuantity();
-            var cart = ProductService.GetCart();
-            return View(cart);
-        }
-
-        public IActionResult RemoveFromCart(int id, int quantity)
-        {
-            ProductService.RemoveFromCart(id, quantity);
-            return RedirectToAction("Cart");
-        }
-
-        public IActionResult Checkout()
-        {
-            ViewData["ProductsQuantity"] = ProductService.GetProductsQuantity();
-            var cart = ProductService.GetCart();
-            return View(cart);
-        }
-
-
-        [HttpPost]
-        public IActionResult Checkout(IFormCollection collection)
-        {
-            try
-            {
-                var cart = ProductService.GetCart();
-                Customer customer = ProductService.CreateCustomer(collection);
-                ProductService.AddCustomerToCart(customer);
-                //string cartJson = JsonSerializer.Serialize(cart.ProductsInCart);
-                string customerJson = JsonSerializer.Serialize(customer);
-                ViewData["order"] = customerJson;
-                return View("Order");
-            }
-            catch
-            {
-                return RedirectToAction("Error");
-            }
-
-        }*/
-
 
         /*[ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
         public IActionResult Error()

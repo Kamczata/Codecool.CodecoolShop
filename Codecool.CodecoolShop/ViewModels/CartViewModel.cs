@@ -10,12 +10,12 @@ namespace Codecool.CodecoolShop.ViewModels
     {
 
         public List<ShoppingCartItem> Items { get; set; }
-        public int ItemsInCart { get; set; }
+        public decimal ShoppingCartTotal { get; set; }
 
-        public CartViewModel(List<ShoppingCartItem> items, int itemsInCart)
+        public CartViewModel(List<ShoppingCartItem> items, decimal shoppingCartTotal)
         {
             Items = items;
-            ItemsInCart = itemsInCart;
+            ShoppingCartTotal = shoppingCartTotal;
         }
     }
 }
