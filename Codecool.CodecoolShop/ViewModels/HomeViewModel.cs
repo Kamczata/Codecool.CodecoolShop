@@ -9,13 +9,13 @@ namespace Codecool.CodecoolShop.ViewModels
     public class HomeViewModel
     {
 
-        public IEnumerable<Product> Products { get; set; }
+        public List<Product> Products { get; set; }
         public IEnumerable<ProductCategory> Categories { get; set; }
         public IEnumerable<Supplier> Suppliers { get; set; }
         public int ItemsInCart { get; set; }
         public Filter Filter {get; set;}
 
-        public HomeViewModel(IEnumerable<Product> products, IEnumerable<ProductCategory> categories,
+        public HomeViewModel(List<Product> products, IEnumerable<ProductCategory> categories,
             IEnumerable<Supplier> suppliers, int itemsInCart, Filter filter)
         {
             Products = products;

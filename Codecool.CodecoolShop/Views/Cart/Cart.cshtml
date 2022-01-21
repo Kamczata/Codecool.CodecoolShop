@@ -4,17 +4,17 @@
     ViewData["Price"] = 0;
 }
 
-<div class="container p-3 my-3 bg-white border">
+<div class="container p-3 my-3 bg-white border" style="max-width:1000px">
     <h4>Shopping cart</h4>
     @if (@Model.ShoppingCartTotal == 0)
     {
-    <h5>Your cart is empty</h5>
+        <h5>Your cart is empty</h5>
     }
     else
     {
         @foreach (var item in Model.Items)
         {
-            <div class="container p-3 my-4 bg-white border shadow-sm" style="margin-right:auto; margin-left:auto; max-width:800px">
+            <div class="container p-3 my-4 bg-white border shadow-sm" style="margin-right:auto; margin-left:auto; max-width:750px">
                 <div class="row">
                     <div class="col-1" style="align-self: center">
                         <a class="card-title" asp-controller="Cart" asp-action="RemoveFromCart" asp-route-id="@item.Product.Id" asp-route-quantity="all">
@@ -22,7 +22,7 @@
                                 <path d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z" />
                                 <path d="M4.646 4.646a.5.5 0 0 1 .708 0L8 7.293l2.646-2.647a.5.5 0 0 1 .708.708L8.707 8l2.647 2.646a.5.5 0 0 1-.708.708L8 8.707l-2.646 2.647a.5.5 0 0 1-.708-.708L7.293 8 4.646 5.354a.5.5 0 0 1 0-.708z" />
                             </svg>
-                       </a>
+                        </a>
                     </div>
                     <img class="col-2" src="~/img/@(item.Product.Name).jpg" style="height: 80%; width: 80%; align-self: center; padding-top: 10px">
 
@@ -51,7 +51,7 @@
             </div>
         }
         <div class="cool-button">
-            <h6 style="color: white; padding:10px">TOTAL @Model.ShoppingCartTotal USD</h6>
+            <h6 style="color: white; padding:10px">TOTAL @(Math.Round(Model.ShoppingCartTotal, 2)) USD</h6>
         </div>
         <a asp-controller="Checkout" asp-action="Index">
             <div class="cool-button" style="background-color:#DB3F41; margin-top: 10px; margin-bottom: 10px">

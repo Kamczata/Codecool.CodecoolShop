@@ -13,7 +13,7 @@ namespace Domain
         public Product Product { get; set; }
         public int Quantity { get; set; }
         public string ShoppingCartId { get; set; }
-        [NotMapped]
+
         public decimal ItemTotalPrice { get; set; } = 0;
     }
 }

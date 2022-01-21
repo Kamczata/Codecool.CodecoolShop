@@ -11,7 +11,7 @@ namespace Data
 {
     public class CoolShopContext : DbContext
     {
-        private const string ConnectionString = "Data Source=localhost;Database=CoolShop;Integrated Security=true";
+        private const string ConnectionString = "Data Source=localhost;Database=CS;Integrated Security=true";
 
         public DbSet<Product> Products { get; set; }
         public DbSet<ProductCategory> Categories { get; set; }

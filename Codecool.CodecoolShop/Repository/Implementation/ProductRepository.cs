@@ -28,6 +28,11 @@ namespace Codecool.CodecoolShop.Repository.Implementation
                 .FirstOrDefault(p => p.Id == id);
         }
 
+        public List<Product> GetAll2()
+        {
+            return _context.Products.ToList();
+        }
+
         public IEnumerable<Product> GetAll()
         {
             return _context.Products.ToList();
@@ -40,12 +45,12 @@ namespace Codecool.CodecoolShop.Repository.Implementation
             _context.SaveChanges();
         }
 
-        public IEnumerable<Product> GetProductsByCategory(int categoryId)
+        public List<Product> GetProductsByCategory(int categoryId)
         {
             return _context.Products.Where(p => p.ProductCategory.Id == categoryId).ToList();
         }
 
-        public IEnumerable<Product> GetProductsBySupplier(int supplierId)
+        public List<Product> GetProductsBySupplier(int supplierId)
         {
             return _context.Products.Where(p => p.Supplier.Id == supplierId).ToList();
         }

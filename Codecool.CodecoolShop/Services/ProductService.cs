@@ -25,9 +25,9 @@ namespace Codecool.CodecoolShop.Services
             this.orderRepository = orderRepository;
         }
 
-        public IEnumerable<Product> GetAllProducts()
+        public List<Product> GetAllProducts()
         {
-            return this.productRepository.GetAll();
+            return this.productRepository.GetAll2();
         }
 
         public IEnumerable<ProductCategory> GetAllCategories()
@@ -56,12 +56,12 @@ namespace Codecool.CodecoolShop.Services
             return quantity;
         }
 
-        public IEnumerable<Product> GetProductsForCategory(int categoryId)
+        public List<Product> GetProductsForCategory(int categoryId)
         {
             return this.productRepository.GetProductsByCategory(categoryId);
         }
 
-        public IEnumerable<Product> GetProductsForSupplier(int supplierId)
+        public List<Product> GetProductsForSupplier(int supplierId)
         {
             return this.productRepository.GetProductsBySupplier(supplierId);
         }

@@ -9,16 +9,11 @@
 <div class="container">
     @foreach (var element in Model.Products)
     {
-        <div class="col-lg-3 col-lg-3" style="display: inline-block; max-width: 350px; height: 350px">
+        <div class="col-lg-3 col-lg-3" style="display: inline-block; max-width: 350px; height:auto; padding-bottom: 15px">
             <div class="card">
-                <img src="~/img/@(element.Name).jpg" style="height: 50%; width: 50%; align-self: center; padding-top: 10px">
+                <img src="~/img/@(element.Name).jpg" style="max-height: 175px; max-width: 175px; align-self: center; padding:20px">
 
                 <div class="card-body">
-                    <h5 class="card-title text-center">
-                        Product
-                        @{ var num = Model.Products.Count();}
-                        @num
-                    </h5>
                     <a class="card-title" asp-controller="Product" asp-action="Product" asp-route-id="@element.Id"><h5>@element.Name</h5></a>
                     <p class="card-text">@element.Description.</p>
                     <p class="card-text">Category: @element.ProductCategory.Department</p>
@@ -26,24 +21,24 @@
                     <p class="card-text text-center"><strong>Price: @element.DefaultPrice @element.Currency</strong></p>
                     @if (Model.Filter == Domain.Filter.All)
                     {
-                <a asp-controller="Product" asp-action="AddToCart" asp-route-id="@element.Id" asp-route-view="Index"
-                   type="button" class="btn btn-primary"
-                   style="float: bottom; display: block; margin-left: auto; margin-right: auto; width: 50%;">Add To Cart</a> }
+                        <a asp-controller="Product" asp-action="AddToCart" asp-route-id="@element.Id" asp-route-view="Index"
+                           type="button" class="btn btn-primary"
+                           style="float: bottom; display: block; margin-left: auto; margin-right: auto; width: 50%;">Add To Cart</a> }
                     else if (Model.Filter == Domain.Filter.Supplier)
                     {
-    <a asp-controller="Product" asp-action="AddToCart" asp-route-id="@element.Supplier.Id" asp-route-view="Supplier"
-        type="button" class="btn btn-primary"
-        style="float: bottom; display: block; margin-left: auto; margin-right: auto; width: 50%;">Add To Cart</a> }
+                        <a asp-controller="Product" asp-action="AddToCart" asp-route-id="@element.Supplier.Id" asp-route-view="Supplier"
+                           type="button" class="btn btn-primary"
+                           style="float: bottom; display: block; margin-left: auto; margin-right: auto; width: 50%;">Add To Cart</a> }
                     else
                     {
                         <a asp-controller="Product" asp-action="AddToCart" asp-route-id="@element.ProductCategory.Id" asp-route-view="Category"
-                            type="button" class="btn btn-primary"
-                            style="float: bottom; display: block; margin-left: auto; margin-right: auto; width: 50%;">Add To Cart</a>
+                           type="button" class="btn btn-primary"
+                           style="float: bottom; display: block; margin-left: auto; margin-right: auto; width: 50%;">Add To Cart</a>
                     }
-
+                </div>
                 </div>
             </div>
-        </div>
+        
     }
 
 
