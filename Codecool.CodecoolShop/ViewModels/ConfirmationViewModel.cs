@@ -11,10 +11,13 @@ namespace Codecool.CodecoolShop.ViewModels
 
         public Customer Customer { get; set; }
         public Order Order { get; set; }
-        public ConfirmationViewModel(Customer customer, Order order)
+
+        public decimal TotalPrice { get; set; }
+        public ConfirmationViewModel(Customer customer, Order order, decimal totalPrice)
         {
             Customer = customer;
             Order = order;
+            TotalPrice = totalPrice;
         }
     }
 }

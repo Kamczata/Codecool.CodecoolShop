@@ -11,9 +11,11 @@ namespace Codecool.CodecoolShop.Services
     public class CustomerService
     {
         private readonly ICustomerRepository customerRepository;
-        public CustomerService(ICustomerRepository customerRepository)
+        private readonly IOrderRepository orderRepository;
+        public CustomerService(ICustomerRepository customerRepository, IOrderRepository orderRepository)
         {
             this.customerRepository = customerRepository;
+            this.orderRepository = orderRepository;
         }
 
         public Customer CreateCustomer(IFormCollection collection)
@@ -36,6 +38,11 @@ namespace Codecool.CodecoolShop.Services
         public void AddNewCustomer(Customer customer)
         {
             customerRepository.Add(customer);
+        }
+
+        public void AddNewOrder(Order order)
+        {
+            orderRepository.Add(order);
         }
     }
 }

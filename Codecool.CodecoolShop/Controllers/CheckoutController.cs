@@ -38,12 +38,13 @@ namespace Codecool.CodecoolShop.Controllers
         {
             try
             {
-                //var cart = ProductService.GetCart();
+                var items = shoppingCart.GetShoppingCartItems();
+                var totalPrice = shoppingCart.GetShoppingCartTotal();
                 Customer customer = customerService.CreateCustomer(collection);
                 customerService.AddNewCustomer(customer);
-                //Order order = 
-                //customerService.AddOrder()
-                //ConfirmationViewModel model = new ConfirmationViewModel(customer, order);
+                Order order = new Order(customer, items);
+                customerService.AddNewOrder(order);
+                ConfirmationViewModel model = new ConfirmationViewModel(customer, order, totalPrice);
                 return View("Order");
             }
             catch
