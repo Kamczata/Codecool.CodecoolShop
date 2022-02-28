@@ -27,7 +27,7 @@ namespace Codecool.CodecoolShop.Services
 
         public List<Product> GetAllProducts()
         {
-            return this.productRepository.GetAll();
+            return this.productRepository.GetAll2();
         }
 
         public IEnumerable<ProductCategory> GetAllCategories()

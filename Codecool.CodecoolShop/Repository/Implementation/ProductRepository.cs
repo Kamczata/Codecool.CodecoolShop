@@ -28,15 +28,15 @@ namespace Codecool.CodecoolShop.Repository.Implementation
                 .FirstOrDefault(p => p.Id == id);
         }
 
-        public List<Product> GetAll()
+        public List<Product> GetAll2()
         {
             return _context.Products.ToList();
         }
 
-       /* public IEnumerable<Product> GetAll()
+        public IEnumerable<Product> GetAll()
         {
             return _context.Products.ToList();
-        }*/
+        }
 
         public void Remove(int id)
         {
